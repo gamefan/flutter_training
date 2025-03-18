@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "name": "1元單杯袋 1 Dollar Cup Bag",
+    "image": "assets/images/food_1.png"
+  },
+  {
+    "id": "2",
+    "name": "熱帶水果風味茶 Hot Tropical Fruit Tea",
+    "image": "assets/images/food_2.png"
+  },
+  {
+    "id": "3",
+    "name": "高山青茶 High Mountain Green Tea",
+    "image": "assets/images/food_3.png"
+  },
+  {
+    "id": "4",
+    "name": "珍珠奶茶 Pearl Milk Tea",
+    "image": "assets/images/food_4.png"
+  },
+  {
+    "id": "5",
+    "name": "冬瓜檸檬 Winter Melon Lemon Tea",
+    "image": "assets/images/food_5.png"
+  },
+  {
+    "id": "6",
+    "name": "四季春青茶 Four Seasons Spring Tea",
+    "image": "assets/images/food_6.png"
+  },
+  {
+    "id": "7",
+    "name": "阿薩姆紅茶 Assam Black Tea",
+    "image": "assets/images/food_7.png"
+  },
+  {
+    "id": "8",
+    "name": "芒果青茶 Mango Green Tea",
+    "image": "assets/images/food_8.png"
+  },
+  {
+    "id": "9",
+    "name": "多多綠 Yakult Green Tea",
+    "image": "assets/images/food_9.png"
+  },
+  {
+    "id": "10",
+    "name": "黑糖波霸鮮奶 Brown Sugar Boba Milk",
+    "image": "assets/images/food_10.png"
+  }
+]

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_training/widgets/hw_04/main_layout.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_training/widgets/hw_05/hw05_main_layout.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    ProviderScope(
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatefulWidget {
@@ -15,6 +20,6 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
-    return MainLayout();
+    return Hw05MainLayout();
   }
 }
