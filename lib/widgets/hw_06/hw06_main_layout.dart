@@ -104,53 +104,72 @@ class _Hw06MainLayoutState extends State<Hw06MainLayout> {
 
               /// 清單區塊
               Expanded(
-                child: ListView.builder(
-                  itemCount: _todoList.length,
-                  itemBuilder: (context, index) {
-                    final item = _todoList[index];
-                    if (!_showCompleted && item.isDone) return Container();
-
-                    return Container(
-                      margin: const EdgeInsets.symmetric(vertical: 6),
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.transparent, // 背景透明
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Row(
-                        children: [
-                          Checkbox(
-                            value: item.isDone,
-                            onChanged: (value) {
-                              setState(() {
-                                item.isDone = value ?? false;
-                              });
-                            },
-                          ),
-                          Expanded(
-                            child: Text(
-                              item.title,
-                              style: TextStyle(
-                                fontSize: 18,
-                                decoration: item.isDone
-                                    ? TextDecoration.lineThrough
-                                    : null,
-                              ),
+                child: ReorderableListView(
+                  buildDefaultDragHandles: false, // 使用自定拖曳觸發區
+                  onReorder: (oldIndex, newIndex) {
+                    setState(() {
+                      // 往後拖 移除舊位置的項目後，原本 newIndex 指向的項目就會往前移一格，
+                      if (newIndex > oldIndex) newIndex -= 1;
+                      final item = _todoList.removeAt(oldIndex);
+                      _todoList.insert(newIndex, item);
+                    });
+                  },
+                  children: [
+                    for (int index = 0; index < _todoList.length; index++)
+                      if (_showCompleted || !_todoList[index].isDone)
+                        ReorderableDelayedDragStartListener(
+                          key: ValueKey(_todoList[index]),
+                          index: index,
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(vertical: 6),
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Row(
+                              children: [
+                                Checkbox(
+                                  value: _todoList[index].isDone,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _todoList[index].isDone = value ?? false;
+                                    });
+                                  },
+                                ),
+                                Expanded(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        _todoList[index].isDone =
+                                            !_todoList[index].isDone;
+                                      });
+                                    },
+                                    child: Text(
+                                      _todoList[index].title,
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        decoration: _todoList[index].isDone
+                                            ? TextDecoration.lineThrough
+                                            : null,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.delete,
+                                      color: Colors.black54),
+                                  onPressed: () {
+                                    setState(() {
+                                      _todoList.removeAt(index);
+                                    });
+                                  },
+                                ),
+                              ],
                             ),
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.delete,
-                                color: Colors.black54), // 改為黑色
-                            onPressed: () {
-                              setState(() {
-                                _todoList.removeAt(index);
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                    );
-                  },
+                        ),
+                  ],
                 ),
               ),
             ],
