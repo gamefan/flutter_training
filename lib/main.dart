@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_training/widgets/hw_05/hw05_main_layout.dart';
+import 'package:flutter_training/widgets/hw_06/hw06_main_layout.dart';
 
 void main() {
   runApp(
@@ -20,6 +21,6 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
-    return Hw05MainLayout();
+    return Hw06MainLayout();
   }
 }
