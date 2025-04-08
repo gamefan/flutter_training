@@ -1,3 +1,14 @@
+// ✅ 1. 設定使用的 Android Gradle Plugin (AGP) 版本
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.2.2' // ✅ 升級 AGP 版本
+    }
+}
+
 allprojects {
     repositories {
         google()

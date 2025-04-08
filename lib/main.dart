@@ -21,6 +21,13 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
-    return Hw06MainLayout();
+    return MaterialApp(
+      title: 'Flutter HW-08',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const Hw06MainLayout(),
+    );
   }
 }
